@@ -7,3 +7,4 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial project creation.
 - Initial pytest tests successful (1 test).
+- Initial travis-ci build successful.
