@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 def setup_path():
     import sys
     from os import path
@@ -41,3 +42,4 @@ def test_setup():
     logging.getLogger().error(
         f'Path: {sys.path}'
     )
+
