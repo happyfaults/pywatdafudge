@@ -154,7 +154,33 @@ If you do not install the **watdafudge_c** package, the root config path must be
 >>> import watdafudge_c
 >>>
 ```
-    
+
+## Logging
+When executing the library with an app interactor type, log messages will be outputted to files. The configuration settings for logging can be accessed as follows:
+```python
+>>> a.config[NS.logging_dir]
+'/home/hendrix/dev/pywatdafudge/logs'
+>>> a.logger
+<Logger watdafudge.client.files (INFO)>
+>>> a.config[NS.logging]
+{'version': 1,
+ 'disable_existing_loggers': False,
+ 'formatters': {'simple': {'format': '%(asctime)s|%(name)s|%(levelname)s: %(message)s'}},
+ 'handlers': {'console': {'class': 'logging.StreamHandler',
+   'level': 'CRITICAL',
+   'formatter': 'simple',
+   'stream': 'ext://sys.stdout'},
+  'info_file_handler': {'class': 'logging.handlers.RotatingFileHandler',
+   'level': 'INFO',
+   'formatter': 'simple',
+   'filename': '/home/hendrix/dev/pywatdafudge/logs/files-2018_08_13_14_33_30-info.log',
+   'maxBytes': 10485760,
+   'backupCount': 20,
+   'encoding': 'utf8'},
+...
+}
+```
+By default, in the log folder there will be two files for critical and non-critical messages respectively.
 ## TDD & CI
 
 This library is being developed using the agile principles of [test-driven development (TDD)](http://agiledata.org/essays/tdd.html) and [continous integration (CI)](https://www.atlassian.com/continuous-delivery/ci-vs-ci-vs-cd).
