@@ -104,7 +104,7 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
 
         yield results, method, dst_path
 ```
-See tests/test_3000_validation/test_1000_wp/test_case_1000.py for more details.
+See [test_case_1000.py](https://github.com/happyfaults/pywatdafudge/blob/master/tests/test_3000_validation/test_1000_wp/test_case_1000.py) for more details.
 
 ## Configuration
 All configuration is done using a framework that sets items to a Python dict when the app is loaded.
@@ -156,7 +156,7 @@ Is the corresponding matching type: `watdafudge_c.client.files.App`
 To update the default values, see file: `config/watdafudge_c/client/files/__init__.py`
 
 #### Ensure Config Modules Can Be Imported
-If you do not install the **watdafudge_c** package, the root config path must be included in your **PYTHONPATH** environment variable so that the configuration modules can be imported when App.Load is called.
+If you do not install the **watdafudge_c** package, the root config path must be included in your **PYTHONPATH** environment variable so that the configuration modules can be imported when `App.Load()` is called.
 
 If running `App.Load()` throws **ModuleNotFoundError** type exceptions, verify that under your environment you can import both these modules without any errors.
 ```python
