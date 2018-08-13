@@ -23,7 +23,7 @@ class Factory(Factory):
             from watdafudge.analyzers.whoosh import Analyzer
             return Analyzer.Default
 
-        else:
+        elif method == 'regex':
             from watdafudge.analyzers.whoosh import Analyzer
             return Analyzer.Default
         
@@ -45,7 +45,7 @@ class Factory(Factory):
 class App(Interactor):
     """
     """
-    FactoryType = Factory
+    FactoryType = Factory.Default
     name = 'files'
 
     def analyze(
