@@ -34,7 +34,7 @@ This method creates a [Whoosh](http://whoosh.readthedocs.io/en/latest/intro.html
 #### Dependencies:
 1. [numpy](http://www.numpy.org/)
 2. [nltk](https://www.nltk.org/)
-3. whoosh
+3. [whoosh](http://whoosh.readthedocs.io/en/latest/intro.html)
 
 To install the dependencies:
 
