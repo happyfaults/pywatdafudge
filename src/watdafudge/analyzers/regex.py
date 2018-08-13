@@ -6,7 +6,9 @@ class Factory(BaseFactory):
 
 class Analyzer(BaseAnalyzer):
 
-    DefaultFactory = Factory
+    DefaultFactory = Factory.Default
+
+    SETTINGS_KEY = 'analyzers.regex'
 
     @classmethod
     def Default(cls, match_phrases=None, config=**kwargs):
@@ -17,12 +19,6 @@ class Analyzer(BaseAnalyzer):
     def __init__(self, match_phrases):
         self.match_phrases = match_phrases
     
-    def set_settings(self):
-        config = self.config
-        NS = config['.NS']
-        self.settings = config[NS.analyzers.regex]
-        return self.settings
-
     def addPhrases(self, phrases, weight=1.0):
         from re import compile, \
             escape, \
@@ -61,7 +57,7 @@ class Analyzer(BaseAnalyzer):
         #settings = self.settings
 
         if demunge is True:
-            demunge = self.text_demunger_factory().process
+            demunge = self.text_demunger.process
         elif not callable(demunge):
             demunge = lambda t: t
         

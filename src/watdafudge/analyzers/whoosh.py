@@ -63,9 +63,6 @@ class Factory(BaseFactory):
         )
         return self.schema
 
-    def createTextDemunger(self):
-        from watdafudge.nltools.demunger import TextDemunger
-        return TextDemunger.Default()
 
     def createWordTokenizer(self):
         from watdafudge.nltools.words import DefaultTokenizer
@@ -88,13 +85,9 @@ class Factory(BaseFactory):
 
 class Analyzer(BaseAnalyzer):
 
-    DefaultFactory = Factory
+    DefaultFactory = Factory.Default
 
-    def set_settings(self):
-        config = self.config
-        NS = config['.NS']
-        self.settings = config[NS.analyzers.whoosh]
-        return self.settings
+    SETTINGS_KEY = 'analyzers.whoosh'
 
     def set_ix(self):
         self.ix = self.factory.openIndex()
@@ -104,10 +97,6 @@ class Analyzer(BaseAnalyzer):
         self.word_tokenizer = self.factory.createWordTokenizer()
         return self.word_tokenizer
 
-    def set_text_demunger(self):
-        self.text_demunger = self.factory.createTextDemunger()
-        return self.text_demunger
-    
     def set_qparser_factory(self):
         self.qparser_factory = self.factory.getQParserFactory()
         return self.qparser_factory
