@@ -149,9 +149,9 @@ To access the settings for the regex and whoosh analyzers associated with this a
 ### Config Modules
 From the project directory, you can find the default configuration modules in the subfolder: `config/watdafudge_c`
 
-So the configuration module for the app type: `watdafudge.client.files.App`
+So the configuration module for the *interactor app* type: `watdafudge.client.files.App`
 
-Is the corresponding matching type: `watdafudge_c.client.files.App`
+Is the corresponding matching *config* type: `watdafudge_c.client.files.App`
 
 To update the default values, see file: `config/watdafudge_c/client/files/__init__.py`
 
