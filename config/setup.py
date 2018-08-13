@@ -23,15 +23,15 @@ def read(*names, **kwargs):
 
 setup(
     name='pywatdafudge_c',
-    version='0.0.2a',
+    version='0.0.2a0',
     license='MIT License',
     description='The default config modules for pywatdafudge.',
     author='felix',
     author_email='happyfaults@gmail.com',
     url='https://github.com/happyfaults/pywatdafudge',
-    packages=find_packages('config'),
-    package_dir={'': 'config'},
-    py_modules=[splitext(basename(path))[0] for path in glob('config/*.py')],
+    packages=find_packages('.'),
+    package_dir={'': '.'},
+    py_modules=[splitext(basename(path))[0] for path in glob('*.py')],
     include_package_data=True,
     zip_safe=False,
 )

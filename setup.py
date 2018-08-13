@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name='pywatdafudge',
-    version='0.0.2a',
+    version='0.0.2a0',
     license='MIT License',
     description='A simple library for filtering profanity.',
     long_description='%s\n%s' % (
