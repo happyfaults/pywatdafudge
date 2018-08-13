@@ -157,9 +157,12 @@ To update the default values, see file: `config/watdafudge_c/client/files/__init
 
 #### Ensure Config Modules Can Be Imported
 If you do not install the **watdafudge_c** package, the root config path must be included in your **PYTHONPATH** environment variable so that the configuration modules can be imported when App.Load is called.
+
+If running `App.Load()` throws **ModuleNotFoundError** type exceptions, verify that under your environment you can import both these modules without any errors.
 ```python
+>>> import watdafudge
 >>> import watdafudge_c
->>>
+>>> 
 ```
 
 ## Logging
