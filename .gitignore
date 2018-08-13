@@ -118,3 +118,6 @@ venv.bak/
 
 # environment setup
 .env
+
+# whoosh index dir
+*_index/

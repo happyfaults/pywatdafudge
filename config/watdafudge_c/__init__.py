@@ -26,7 +26,7 @@ class Config(object):
     def LoadBase(cls, context_cls, cfg):
         from os import path
         
-        NS = cfg[context_cls.ROOT_NS]
+        NS = cfg['.NS']
         
         now = cfg[NS.now_dt]
         cfg.update({
@@ -47,7 +47,7 @@ class Config(object):
     def LoadLogging(cls, context_cls, cfg):
         from os import path
         
-        NS = cfg[context_cls.ROOT_NS]
+        NS = cfg['.NS']
                
         prefix = '%s-%s' % (
             cfg[NS.prefix],
