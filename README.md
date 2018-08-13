@@ -137,11 +137,14 @@ For convenience, you can access and update configuration items using a namespace
 >>> a.config['watdafudge.logging_dir']
 '/home/hendrix/dev/pywatdafudge/logs'
 ```
-To access the settings for the regex and whoosh analyzers associated with this app
+To access the settings for the regex and whoosh analyzers associated with this app, you can do something like the following:
 ```python
->>> a.config[NS.analyzers.regex]
+>>> aNS = NS.analyzers
+>>> aNS
+'watdafudge.analyzers'
+>>> a.config[aNS.regex]
 {}
->>> whoosh_settings = a.config[NS.analyzers.whoosh]
+>>> whoosh_settings = a.config[aNS.whoosh]
 >>> whoosh_settings
 {'index_dir': 'wtf_index', 'word_ngrams_max': 3, 'slop_factor': 2}
 >>> whoosh_settings['index_dir'] = 'new_wtf_index'
