@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
     - watdafudge.lib.client
 - Unit tests for base libraries
 - Associated config module for client framework
+- Validation tests for WP use case
 
 ## 0.0.1 - 2018-08-12
 ### Added
