@@ -1,7 +1,6 @@
 # PyWatDaFudge (PyWTF)
-A Python library to detect profanity and measure toxicity of text documents (ie. online comments)
+A Python library to detect and score text documents for risky phrases (ie. profanity in online comments).
 
-#
 ## Quickstart Install
 Currently, the library has only been tested with [Python 3.6.6](https://www.python.org/downloads/release/python-366/).
 
@@ -11,27 +10,26 @@ To install everything using [pip](https://pypi.org/project/pip/), issue the foll
 2. pip install -e .
 3. pip install -e config/
 
-Leave out the -e if you want to install the packages into your Python site folder.
+Leave out the **-e** switch if you want to install the packages into your Python site folder.
 
-You can also use the equivalent python setup commands:
+You can also use the equivalent Python setup commands:
 
 1. pip install -r requirements.txt
 2. python setup.py develop (or install)
 3. python config/setup.py develop (or install)
 
-#
 ## Requirements
 
-Currently, the library supports two methods for detecting profanity as follows.
+Currently, the library supports two methods for detecting risky phrases as follows.
 ### Regex
 
-This method uses regular expressions to match documents against a list of phrases cached in memory.
+This method uses regular expressions to match documents against a list of risky phrases cached in memory.
 
 There are no extra dependencies required for this method.
 
 ### Whoosh
 
-This method creates a [Whoosh](http://whoosh.readthedocs.io/en/latest/intro.html) search index of the list of phrases. Documents are then split into various word-ngrams to produced phrases to search against the Whoosh index.
+This method creates a [Whoosh](http://whoosh.readthedocs.io/en/latest/intro.html) search index of the list of phrases. Documents are then split into a specified range of **word-ngrams** to produce phrases that are then searched against the Whoosh index of risky phrases.
 
 #### Dependencies:
 1. [numpy](http://www.numpy.org/)
@@ -42,19 +40,24 @@ To install the dependencies:
 
 `pip install -r requriements.txt`
 
-#
-### Example Usage
+## Example Usage
 ```python
 def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
     """Setting demunge=True will enable demunging of text documents.
 
     For example:
-    1. The character '@' will get replace with 'a'.
+    1. The character '@' will be replaced with an 'a' character.
 
     See module watdafudge.nltools.demunger for more details.
     """
     from os import path
     
+    # Each risky phrases file are assigned a weight value
+    # that will is in match scoring
+    #
+    # For example:
+    # Phrases from low_risk_phrases.txt will have a lower weighting
+    # than phrases from the high_risk_phrases.txt file.
     phrases_files = (
         (
             path.join(
@@ -72,7 +75,7 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
         ),
     )
 
-    # load the files-based app interactor (context)
+    # load the files-based app interactor type
     from watdafudge.client.files import App
     a = App.Load()
 
@@ -91,12 +94,11 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
 
         results = {}
         for d in a.serializeDocs(docs, dst_path):
+            # the score value is a float
             results[d['name']] = int(d['score'])
 
         return results
-
 ```
-#
 ## Configuration
 All configuration is done using a framework that sets items to a Python dict when the app is loaded.
 ```python
@@ -128,7 +130,7 @@ For convenience, you can access and update configuration items using a namespace
 >>> a.config['watdafudge.logging_dir']
 '/home/hendrix/dev/pywatdafudge/logs'
 ```
-To access the settings for the regex and whoosh analyzers
+To access the settings for the regex and whoosh analyzers associated with this app
 ```python
 >>> a.config[NS.analyzers.regex]
 {}
@@ -138,15 +140,16 @@ To access the settings for the regex and whoosh analyzers
 >>> whoosh_settings['index_dir'] = 'new_wtf_index'
 ```
 ### Config Modules
-From the project directory, you can find the default configuration modules in the subfolder: config/watdafudge_c
+From the project directory, you can find the default configuration modules in the subfolder: `config/watdafudge_c`
 
-So the configuration module for the app: `watdafudge.client.files.App`
+So the configuration module for the app type: `watdafudge.client.files.App`
 
-Is the corresponding match type: `watdafudge_c.client.files.App`
+Is the corresponding matching type: `watdafudge_c.client.files.App`
 
-To change defauls, see file: `config/watdafudge_c/client/files/__init__.py`
+To update the default values, see file: `config/watdafudge_c/client/files/__init__.py`
 
-If you do not install the watdafudge_c package, the root config path must be included in your PYTHONPATH environment variable so that configuration modules can be imported.
+#### Ensure Config Modules Can Be Imported
+If you do not install the **watdafudge_c** package, the root config path must be included in your **PYTHONPATH** environment variable so that the configuration modules can be imported when App.Load is called.
 ```python
 >>> import watdafudge_c
 >>>
@@ -166,8 +169,8 @@ At this time, the library is being developed as a proof-of-concept.
 
 It is being tested against [Python 3.6.6](https://www.python.org/downloads/release/python-366/) only at the moment.
 
-There may be an effort to support [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) and the [Python 3.5](https://www.python.org/downloads/release/python-356/) earlier versions.
+There may be an effort to support [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) and the [Python 3.5](https://www.python.org/downloads/release/python-356/) and earlier versions.
 
-However, the goal is to use the library as part of a [RESTful](https://www.restapitutorial.com/) [Microservice](https://en.wikipedia.org/wiki/Microservices) solution for the [Kaggle's Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
+However, a main goal of this library is to develop a [RESTful](https://www.restapitutorial.com/) [Microservices](https://en.wikipedia.org/wiki/Microservices) solution for the [Kaggle's Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
 
-So new features like [asyncio](https://docs.python.org/3/library/asyncio.html) that are only available for Python 3.6+ may be utilized.
+So new features like [asyncio](https://docs.python.org/3/library/asyncio.html) that are currently only available for **Python 3.6+** may be utilized.
