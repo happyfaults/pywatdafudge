@@ -150,7 +150,7 @@ To access the settings for the regex and whoosh analyzers associated with this a
 >>> whoosh_settings['index_dir'] = 'new_wtf_index'
 ```
 ### Config Modules
-From the project directory, you can find the default configuration modules in the subfolder: `config/watdafudge_c`
+From the project directory, you can find the default configuration modules in the subfolder: [config/watdafudge_c](https://github.com/happyfaults/pywatdafudge/tree/master/config/watdafudge_c)
 
 So the configuration module for the *interactor app* type: [watdafudge.client.files.App](https://github.com/happyfaults/pywatdafudge/blob/master/src/watdafudge/client/files/__init__.py)
 
