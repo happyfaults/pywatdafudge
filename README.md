@@ -38,9 +38,9 @@ This method creates a [Whoosh](http://whoosh.readthedocs.io/en/latest/intro.html
 
 To install the dependencies:
 
-`pip install -r requriements.txt`
+`pip install -r requirements.txt`
 
-You may also need to install the nlkt *punkt* package:
+You may also need to install the nlkt *punkt* language package:
 
 `python -m nltk.downloader punkt`
 
@@ -57,10 +57,10 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
     from os import path
     
     # Each risky phrases file are assigned a weight value
-    # that will is in match scoring
+    # that used in phrase match scoring
     #
     # For example:
-    # Phrases from low_risk_phrases.txt will have a lower weighting
+    # Phrases from the low_risk_phrases.txt file will have a lower weighting
     # than phrases from the high_risk_phrases.txt file.
     phrases_files = (
         (
@@ -103,6 +103,8 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
 
         return results
 ```
+See tests/test_3000_validation/test_1000_wp/test_case_1000.py for more details.
+
 ## Configuration
 All configuration is done using a framework that sets items to a Python dict when the app is loaded.
 ```python
