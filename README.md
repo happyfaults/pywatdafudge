@@ -29,7 +29,7 @@ There are no extra dependencies required for this method.
 
 ### Whoosh
 
-This method creates a [Whoosh](http://whoosh.readthedocs.io/en/latest/intro.html) search index of the list of phrases. Documents are then split into a specified range of **word-ngrams** to produce phrases that are then searched against the Whoosh index of risky phrases.
+This method creates a [Whoosh](http://whoosh.readthedocs.io/en/latest/intro.html) search index of the risky phrases. Documents are then split into a specified range of **word-ngrams** to produce phrases that are then searched against the Whoosh index of risky phrases for *fuzzy* matches.
 
 #### Dependencies:
 1. [numpy](http://www.numpy.org/)
@@ -56,8 +56,9 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
     """
     from os import path
     
-    # Risky phrases file are assigned a weight value
-    # that will be used in phrase match scoring.
+    # A risky phrases file is assigned a default weight value
+    # that will be applied to all contained phrases.
+    # The weight is factored into phrase match scoring.
     #
     # For example:
     # Phrases from the low_risk_phrases.txt file will have a lower weighting
@@ -101,7 +102,7 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
             # the score value is a float
             results[d['name']] = int(d['score'])
 
-        return results
+        yield results, method, dst_path
 ```
 See tests/test_3000_validation/test_1000_wp/test_case_1000.py for more details.
 
