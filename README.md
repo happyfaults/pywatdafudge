@@ -56,8 +56,8 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
     """
     from os import path
     
-    # Each risky phrases file are assigned a weight value
-    # that used in phrase match scoring
+    # Risky phrases file are assigned a weight value
+    # that will be used in phrase match scoring.
     #
     # For example:
     # Phrases from the low_risk_phrases.txt file will have a lower weighting
