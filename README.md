@@ -40,6 +40,10 @@ To install the dependencies:
 
 `pip install -r requriements.txt`
 
+You may also need to install the nlkt *punkt* package:
+
+`python -m nltk.downloader punkt`
+
 ## Example Usage
 ```python
 def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
