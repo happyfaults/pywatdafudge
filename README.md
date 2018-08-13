@@ -103,6 +103,6 @@ It is being tested against [Python 3.6.6](https://www.python.org/downloads/relea
 
 There may be an effort to support [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) and [Python 3.5.6](https://www.python.org/downloads/release/python-356/) versions.
 
-However, the goal is to use the library as part of a [RESTful](https://www.restapitutorial.com/) [Microservice](https://en.wikipedia.org/wiki/Microservices) to implement a solution for the [Kaggle's Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
+However, the goal is to use the library as part of a [RESTful](https://www.restapitutorial.com/) [Microservice](https://en.wikipedia.org/wiki/Microservices) solution for the [Kaggle's Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
 
 So new features like [asyncio](https://docs.python.org/3/library/asyncio.html) that are only available for Python 3.6+ may be utilized.

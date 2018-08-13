@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+
 def setup_path():
     import sys
     from os import path
