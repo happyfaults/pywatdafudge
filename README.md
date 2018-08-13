@@ -152,11 +152,11 @@ To access the settings for the regex and whoosh analyzers associated with this a
 ### Config Modules
 From the project directory, you can find the default configuration modules in the subfolder: `config/watdafudge_c`
 
-So the configuration module for the *interactor app* type: `watdafudge.client.files.App`
+So the configuration module for the *interactor app* type: [watdafudge.client.files.App](https://github.com/happyfaults/pywatdafudge/blob/master/src/watdafudge/client/files/__init__.py)
 
-Is the corresponding matching *config* type: `watdafudge_c.client.files.App`
+Is the corresponding matching *config* type: [watdafudge_c.client.files.App](https://github.com/happyfaults/pywatdafudge/blob/master/config/watdafudge_c/client/files/__init__.py)
 
-To update the default values, see file: `config/watdafudge_c/client/files/__init__.py`
+To update the default values, see file: [config/watdafudge_c/client/files/\_\_init\_\_.py](https://github.com/happyfaults/pywatdafudge/blob/master/config/watdafudge_c/client/files/__init__.py)
 
 #### Ensure Config Modules Can Be Imported
 If you do not install the **watdafudge_c** package, the root config path must be included in your **PYTHONPATH** environment variable so that the configuration modules can be imported when `App.Load()` is called.
