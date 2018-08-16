@@ -1,7 +1,8 @@
 # PyWatDaFudge (PyWTF)
-A Python library to detect and score text documents for risky phrases (ie. profanity in online comments).
+<img align="right" src="https://raw.githubusercontent.com/happyfaults/site-common/master/images/logo64.png"/>A Python library to detect and score text documents for risky phrases (ie. profanity in online comments).
 
-## Quickstart Install
+
+## Quick Install
 Currently, the library has only been tested with [Python 3.6.6](https://www.python.org/downloads/release/python-366/).
 
 To install everything using [pip](https://pypi.org/project/pip/), issue the following commands from the project root directory:

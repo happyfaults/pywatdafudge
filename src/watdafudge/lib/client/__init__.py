@@ -1,8 +1,3 @@
-'''
-Created on 2014-02-17
-
-@author: Kia <kia@pcmusic.com>
-'''
 from builtins import object
 from ..lang.factory import LazyObject, Factory
 
