@@ -1,20 +1,38 @@
+import watdafudge
 from watdafudge import pytest
 
-def test_0000_init():
-    import watdafudge
-    assert watdafudge.__version__
+@pytest.fixture
+def app():
+    from watdafudge.client.files import App
+    return App.Load()
+    
+@pytest.fixture
+def files_dir():
+    from os import path
 
-def test_1000_use_case():
+    return path.join(
+        path.dirname(
+            path.abspath(__file__)
+        ),
+        'files'
+    )
+
+@pytest.fixture
+def tmp_dir():
+    return watdafudge.test_mktmpdir(
+        'watdafudge_client_files'
+    )
+
+
+def test_1000_use_case(
+    app, files_dir, tmp_dir
+):
     """First TDD test case
     """
     from os import path
 
-    from watdafudge.client.files import App
-    a = App.Load()
-
     files_dir = path.join(
-        path.dirname(path.abspath(__file__)),
-        'files',
+        files_dir,
         'case_wp_00'
     )
 
@@ -50,19 +68,25 @@ def test_1000_use_case():
     with open(path.join(files_dir, 'expected_results.yml')) as f:
         expected_r = yaml.load(f)
     
+    NS = app.RootNS.analyzers
+    whoosh_settings = app.config[NS.whoosh]
+    whoosh_settings['index_dir'] = path.join(
+        tmp_dir,
+        'wp_1000_usecase-whoosh_wtf_index'
+    )
     for m in ('regex', 'whoosh',):
-        docs = a.analyze(
+        docs = app.analyze(
             docs_dir,
             phrases_files=phrases_files,
             method=m
         )
 
         dst_path = path.join(
-            files_dir,
-            f'actual_results-{m}.txt'
+            tmp_dir,
+            f'wp_1000_usecase-actual_results-{m}.txt'
         )
         results = {}
-        for d in a.serializeDocs(docs, dst_path):
+        for d in app.serializeDocs(docs, dst_path):
             results[d['name']] = int(d['score'])
 
         assert results == expected_r, m
