@@ -24,15 +24,13 @@ def read(*names, **kwargs):
 
 setup(
     name='pywatdafudge',
-    version='0.0.2a0',
+    version='0.0.2a1',
     license='MIT License',
     description='A simple library for filtering profanity.',
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.md')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.md'))
     ),
-    author='felix',
-    author_email='happyfaults@gmail.com',
     url='https://github.com/happyfaults/pywatdafudge',
     packages=find_packages('src'),
     package_dir={'': 'src'},

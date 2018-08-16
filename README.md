@@ -108,7 +108,7 @@ def wp_use_case(docs_dir, phrases_dir, results_dir, demunge=False):
 See [test_case_1000.py](https://github.com/happyfaults/pywatdafudge/blob/master/tests/test_3000_validation/test_1000_wp/test_case_1000.py) for more details.
 
 ## Configuration
-All configuration is done using a framework that sets items to a Python dict when the app is loaded.
+All configuration is done using a framework that sets items to a Python dict when the app is loaded. When `App.Load()` is invoked, it will call its [config manager type](https://github.com/happyfaults/pywatdafudge/blob/master/src/watdafudge/lib/client/config.py) to populate the app's `config` member variable.
 ```python
 >>> from watdafudge.client.files import App
 >>> a = App.Load()
@@ -123,7 +123,7 @@ All configuration is done using a framework that sets items to a Python dict whe
 }
 ```
 #### Namespaces
-For convenience, you can access and update configuration items using a namespace type variable.
+For convenience, you can access and update configuration items using a [namespace type](https://github.com/happyfaults/pywatdafudge/blob/master/src/watdafudge/lib/lang/namespace.py) variable.
 ```python
 >>> NS = a.config['.NS']
 >>> NS

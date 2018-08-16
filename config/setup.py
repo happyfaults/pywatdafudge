@@ -23,11 +23,9 @@ def read(*names, **kwargs):
 
 setup(
     name='pywatdafudge_c',
-    version='0.0.2a0',
+    version='0.0.2a1',
     license='MIT License',
     description='The default config modules for pywatdafudge.',
-    author='felix',
-    author_email='happyfaults@gmail.com',
     url='https://github.com/happyfaults/pywatdafudge',
     packages=find_packages('.'),
     package_dir={'': '.'},
