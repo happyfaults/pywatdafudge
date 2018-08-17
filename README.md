@@ -1,5 +1,5 @@
 # PyWatDaFudge (PyWTF)
-<img align="right" src="https://raw.githubusercontent.com/happyfaults/site-common/master/images/logo64.png"/>A Python library to detect and score text documents for risky phrases (ie. profanity in online comments).
+<img align="right" width=84 height=84 src="https://github.com/happyfaults/site-common/raw/master/images/logo128.png"/>A Python library to detect and score text documents for risky phrases (ie. profanity in online comments).
 
 
 ## Quick Install
